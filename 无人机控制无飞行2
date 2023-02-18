@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Thirdperosnmove : MonoBehaviour
+{ 
+    public Rigidbody rb;
+    public CharacterController controller;
+    public float speed = 6f;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * speed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.E)) //E键的按下
+        {
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            //向上运动
+        }
+        if (Input.GetKey(KeyCode.Q)) //Q键的按下
+        {
+            transform.Translate(Vector3.down * speed * Time.deltaTime);
+            //向下运动
+        }
+    }
+}
